@@ -1,0 +1,132 @@
+<!-- <?php 
+$conn = mysqli_connect("localhost","root","","rigbee");
+
+if(isset($_POST['submit'])){
+		$name = $_POST['name'];
+		$userName = $_POST['userName'];
+		$phoneNum = $_POST['phoneNum'];
+		$email = $_POST['email'];
+		$password = $_POST['password'];
+		$gender = $_POST['gender'];
+		$country = $_POST['country'];
+		if($_POST['password']!=$_POST['comPassword']){
+			echo"passwords do not match";
+		}
+		elseif (strlen($password)<6) {
+			echo "invalid Password";
+		}
+
+		else{
+		$sql = "INSERT INTO `registration`( `name`, `email`, `phoneNum`, `gender`, `country`, `userName`, `password`) VALUES ('".$name."','".$email."','".$phoneNum."','".$gender."','".$country."','".$userName."','".$password."')";
+			if ($conn->query($sql) == True) {
+				echo "New record inserted successfully";
+			} else{
+				echo "error:". $sql ."<br>". $conn->error;
+			}
+		}
+
+	}
+
+
+ ?> -->
+
+<!DOCTYPE html>
+<html>
+<head>
+<link rel="stylesheet" type="text/css" href="bootstrap-3.3.7-dist\css\bootstrap.css">
+	<title>Rigbee Registration</title>
+</head>
+<body style="background-color: lightgray">
+	<nav class="nav" style="background-image: url(head.jpg)">
+		<a class="navbar-brand" href="#" style="color: white">RIGBEE</a>
+		<ul class="nav navbar-nav">
+			<li class="nav-item">
+				<a class="nav-link" href="#"  style="color:  #1aa3ff">Home <span class="glyphicon glyphicon-home"></span></a>
+			</li>
+			<li class="nav-item">
+				<a class="nav-link" href="#"  style="color:  #1aa3ff">Categories <span class="glyphicon glyphicon-book"></span></a>
+			</li>
+			<li class="nav-item">
+				<a class="nav-link" href="#"  style="color: #1aa3ff">Leadboard <span class="glyphicon glyphicon-fire"></span></a>
+			</li>
+		</ul>
+		<form class="form-inline navbar-form pull-right">
+			<a class="btn btn-success-outline" href="register.php">Register</a>
+			<a class="btn btn-success-outline" href="login.php">Login</a>
+		</form>
+	</nav>
+		<div class="jumbotron" style="background-image: url(imghd1.jpg)">
+			<div class="container">
+				<a href="index.php" style="text-decoration: none"><h1 class="display-3" style="color: white" >RIGBEE.Com</h1></a>
+				<p style="color: white"> Already registered 
+		 			<a href="login.php">Login</a>
+		 		</p>	
+			</div>
+		</div>
+<div class="container">
+	<form action="" method="POST" role="form">
+		<legend>Fill your details</legend>
+	
+		<div class="form-group">
+			<label for="">Name</label>
+			<input type="text" class="form-control" id="name" name="name" placeholder="Enter Name">
+		</div>
+		<div class="form-group">
+			<label for="">email</label>
+			<input type="email" class="form-control" id="email" name="email" placeholder="Enter email">
+		</div>
+		<div class="form-group">
+			<label for="">phone Number</label>
+			<input type="tel" class="form-control" id="phoneNum" name="phoneNum" placeholder="Enter Phone Number">
+		</div>
+
+		<div class="radio">
+			<label><input type="radio" name="gender" id="gender" value="1">Male</label>
+		</div>
+		<div class="radio">
+			<label><input type="radio" name="gender" id="gender" value="2">Female</label>
+		</div>
+		<div class="form-group">
+ 			<label for="">Country</label>
+ 			<select name="country" id="country" placeholder="Select Country">
+ 			<optgroup></optgroup>
+ 			<!-- <?php 
+ 				if($conn){
+ 					$sql = "SELECT `id`, `country`, `continent` FROM `countrytable`";
+ 					$result = mysqli_query($conn, $sql);
+ 					While($row = mysqli_fetch_assoc($result)){ ?>
+ 					<option value="<?php echo $row["id"];?>">
+ 					<?php echo $row["country"];?>
+ 				</option>
+			<?php }
+ 				}
+
+ 			 ?> -->
+ 			</select>
+ 		</div>
+				
+		<div class="form-group">
+			<label for="">UserName</label>
+			<input type="text" class="form-control" id="userName" name="userName" placeholder="Create UserName">
+		</div>
+		<div class="form-group">
+			<label for="">Password</label>
+			<input type="password" class="form-control" id="password" name="password" placeholder="Create Password">
+			<p class="help_block text-warning"><small>password should not be less than 6 characters</small></p>
+		</div>
+		<div class="form-group">
+			<label for="">Comfirm Password</label>
+			<input type="password" class="form-control" id="comPassword" name="comPassword" placeholder="Comfrim Password">
+
+		</div>
+	</div>
+				
+		
+	<center>
+		<button type="submit" class="btn btn-primary btn-info" name="submit" id="submit">register</button>
+	</center>
+		
+	</form>
+</div>
+</body>
+</html>
